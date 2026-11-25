@@ -13,9 +13,9 @@ export function StatsCards({ stats }: StatsCardsProps) {
     stats.total > 0 ? Math.round((stats.completed / stats.total) * 100) : 0
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+    <div className="dashboard-stats grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
       {/* Total Tasks */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-300 transition-all">
+      <div className="dashboard-stat bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-300 transition-all">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
             Total Tasks
@@ -33,7 +33,7 @@ export function StatsCards({ stats }: StatsCardsProps) {
       </div>
 
       {/* Pending Tasks */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-200 transition-all">
+      <div className="dashboard-stat bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-200 transition-all">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wider text-amber-700">
             Pending Tasks
@@ -51,7 +51,7 @@ export function StatsCards({ stats }: StatsCardsProps) {
       </div>
 
       {/* Completed Tasks */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-200 transition-all">
+      <div className="dashboard-stat bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-200 transition-all">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
             Completed Tasks

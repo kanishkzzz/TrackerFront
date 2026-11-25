@@ -29,7 +29,7 @@ export function TaskCard({
 
   return (
     <div
-      className={`group bg-white rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
+      className={`task-card group bg-white rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
         isDone
           ? 'border-slate-200/80 bg-slate-50/50 hover:bg-white'
           : 'border-slate-200 hover:border-indigo-200 hover:shadow-xs'

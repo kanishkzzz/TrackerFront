@@ -1,112 +1,116 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { CheckCircle2, ArrowRight, ShieldCheck, Zap, Layers, Sparkles } from 'lucide-react'
+import {
+  ArrowDown,
+  ArrowRight,
+  Check,
+  Circle,
+  Search,
+  Sparkles,
+} from 'lucide-react'
+
+const inspirationFrames = [
+  { src: '/inspo2.jpg', alt: '', className: 'hero-frame hero-frame-wave' },
+  { src: '/inspo3.jpg', alt: '', className: 'hero-frame hero-frame-sunset' },
+  { src: '/inspo4.jpg', alt: '', className: 'hero-frame hero-frame-wall' },
+  { src: '/inspo5.jpg', alt: '', className: 'hero-frame hero-frame-city' },
+  { src: '/inspo7.jpg', alt: '', className: 'hero-frame hero-frame-sea' },
+]
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col selection:bg-indigo-500 selection:text-white">
-      {/* Navigation Bar */}
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
-              <CheckCircle2 className="w-5 h-5" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">TaskNest</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="text-xs sm:text-sm font-semibold text-slate-700 hover:text-indigo-600 px-3 py-2 rounded-lg transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow-indigo-100 transition-all"
-            >
-              <span>Get Started</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
+    <main className="landing-page">
+      <header className="landing-header">
+        <Link className="brand-lockup" href="/" aria-label="TaskNest home">
+          <span className="brand-mark"><Image src="/icon.jpg" alt="" fill sizes="38px" /></span>
+          <span className="brand-copy"><strong>TaskNest</strong><small>Make space for focus</small></span>
+        </Link>
+        <nav className="landing-nav" aria-label="Main navigation">
+          <a className="nav-current" href="#home">Home</a>
+          <a href="#rhythm">The rhythm</a>
+          <a href="#workspace">Workspace</a>
+          <Link className="nav-cta" href="/login">Sign in <span aria-hidden="true">↗</span></Link>
+        </nav>
+        <Link className="mobile-signin" href="/login">Sign in <span aria-hidden="true">↗</span></Link>
       </header>
 
-      {/* Hero Section */}
-      <main className="flex-1 flex flex-col justify-center items-center text-center px-4 sm:px-6 py-20">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold tracking-wide uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            Simple. Secure. Production-Ready.
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-            Organize your work.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
-              Simplify your day.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            TaskNest is a modern, full-stack task management application powered by Next.js App Router,
-            Tailwind CSS, and Supabase PostgreSQL with strict Row Level Security (RLS).
-          </p>
-
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
-              href="/signup"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md shadow-indigo-200 transition-all cursor-pointer"
-            >
-              <span>Create Free Account</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/login"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold border border-slate-300 shadow-xs transition-all cursor-pointer"
-            >
-              <span>Sign In to Dashboard</span>
-            </Link>
-          </div>
+      <section className="hero-section" id="home" aria-labelledby="hero-title">
+        <div className="hero-collage" aria-hidden="true">
+          {inspirationFrames.map((frame, index) => (
+            <div className={frame.className} key={frame.src}>
+              <Image src={frame.src} alt={frame.alt} fill priority={index < 3} sizes="(max-width: 700px) 30vw, 19vw" />
+            </div>
+          ))}
+          <span className="hero-scribble hero-scribble-blue" />
+          <span className="hero-scribble hero-scribble-violet">✳</span>
+          <span className="hero-scribble hero-scribble-yellow" />
         </div>
 
-        {/* Feature Highlights Grid */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20 text-left">
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <h3 className="text-sm font-bold text-slate-900 mb-1.5">Supabase Auth & RLS</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Every user&apos;s data is strictly isolated via database-level Row Level Security policies.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-4">
-              <Zap className="w-5 h-5" />
-            </div>
-            <h3 className="text-sm font-bold text-slate-900 mb-1.5">Lightning-Fast CRUD</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Instant status toggling, search filtering, modals, and real-time statistics tracking.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-              <Layers className="w-5 h-5" />
-            </div>
-            <h3 className="text-sm font-bold text-slate-900 mb-1.5">Next.js App Router</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Engineered with modern TypeScript, SSR cookie session handling, and clean responsive UI.
-            </p>
-          </div>
+        <div className="hero-center">
+          <p className="eyebrow hero-eyebrow"><Sparkles size={14} aria-hidden="true" /> A calmer way to get things done</p>
+          <h1 id="hero-title">TASKNEST</h1>
+          <p className="hero-tagline">Organize your work. <span>Simplify your day.</span></p>
+          <Link className="hero-primary" href="/signup">Create your free account <ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500">
-        TaskNest • Organize your work. Simplify your day. • Production Ready
+        <div className="hero-footnote"><span>Small steps.<br />Clear head.</span><a href="#rhythm">Discover <ArrowDown size={18} aria-hidden="true" /></a></div>
+      </section>
+
+      <section className="rhythm-strip" id="rhythm" aria-label="How TaskNest helps">
+        <p className="strip-kicker">A little structure goes a long way</p>
+        <div className="rhythm-items">
+          <span><i>01</i> Capture what matters</span><b aria-hidden="true">✳</b>
+          <span><i>02</i> Find your next step</span><b aria-hidden="true">✳</b>
+          <span><i>03</i> See your progress</span>
+        </div>
+      </section>
+
+      <section className="focus-section" id="workspace" aria-labelledby="focus-title">
+        <div className="section-topline"><span>IN FOCUS</span><span>01 — YOUR EVERYDAY WORKSPACE</span></div>
+        <div className="focus-copy">
+          <p className="eyebrow">A place for the open loops</p>
+          <h2 id="focus-title">From “I should”<br />to <em>“it’s done.”</em></h2>
+          <p className="focus-description">Keep your tasks in one clear view. Add the details, find what you need, and mark the little wins as they happen.</p>
+          <Link className="text-link" href="/signup">Make your first list <ArrowRight size={17} aria-hidden="true" /></Link>
+        </div>
+
+        <div className="focus-art">
+          <div className="focus-photo">
+            <Image src="/inspo3.jpg" alt="A vivid sunset above a mountain trail" fill sizes="(max-width: 700px) 100vw, 55vw" />
+            <div className="photo-caption"><span>ONE THING AT A TIME</span><span>KEEP GOING ↗</span></div>
+          </div>
+          <div className="task-preview" aria-label="Illustrative TaskNest task list preview">
+            <div className="preview-top"><span className="preview-dot" /><span>Today, in focus</span><span className="preview-menu">•••</span></div>
+            <div className="preview-stats"><div><strong>08</strong><span>all tasks</span></div><div><strong>05</strong><span>to do</span></div><div><strong>03</strong><span>done</span></div></div>
+            <div className="preview-progress"><span style={{ width: '38%' }} /></div>
+            <div className="preview-task"><Check className="preview-checked" size={16} /><span className="preview-done">Plan the week</span><small>Done</small></div>
+            <div className="preview-task"><Circle size={16} /><span>Send the first draft</span><small>To Do</small></div>
+            <div className="preview-task"><Circle size={16} /><span>Make room for a break</span><small>To Do</small></div>
+            <div className="preview-search"><Search size={14} /><span>Search your tasks</span></div>
+          </div>
+          <div className="focus-sticker">A good day<br />starts here <span>✳</span></div>
+        </div>
+      </section>
+
+      <section className="closing-section" id="closing" aria-labelledby="closing-title">
+        <div className="closing-image">
+          <Image src="/inspo7.jpg" alt="Open water beneath a clear blue sky" fill sizes="(max-width: 700px) 100vw, 42vw" />
+          <span>YOU’LL FIGURE IT OUT.</span>
+        </div>
+        <div className="closing-copy">
+          <p className="eyebrow">Start where you are</p>
+          <h2 id="closing-title">Let’s make<br /><em>today count.</em></h2>
+          <p>A clear place to begin, and a little more room to focus.</p>
+          <Link className="closing-cta" href="/signup">Get started <ArrowRight size={18} aria-hidden="true" /></Link>
+          <span className="closing-login">Already have an account? <Link href="/login">Sign in</Link></span>
+        </div>
+      </section>
+
+      <footer className="landing-footer">
+        <Link className="footer-brand" href="/">TASKNEST<span>©</span></Link>
+        <span>Organize your work. Simplify your day.</span>
+        <div><Link href="/login">Sign in</Link><Link href="/signup">Create account</Link><a href="#home">Back to top ↑</a></div>
       </footer>
-    </div>
+    </main>
   )
 }

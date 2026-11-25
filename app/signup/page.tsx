@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { CheckCircle2, Lock, Mail, ArrowRight, Loader2, AlertCircle, ShieldCheck } from 'lucide-react'
+import { Lock, Mail, ArrowRight, Loader2, AlertCircle, ShieldCheck } from 'lucide-react'
+import { AuthPageShell } from '@/components/auth/AuthPageShell'
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -73,22 +74,13 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        {/* Brand Logo & Header */}
-        <div className="flex justify-center items-center gap-2 mb-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-200">
-            <CheckCircle2 className="w-6 h-6" />
-          </div>
-          <span className="text-2xl font-bold tracking-tight text-slate-900">TaskNest</span>
-        </div>
-        <p className="text-center text-xs uppercase tracking-wider font-semibold text-indigo-600 mb-2">
-          Organize your work. Simplify your day.
-        </p>
-        <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900">
+    <AuthPageShell>
+      <div className="auth-heading">
+        <p className="auth-eyebrow">Start with a clear list</p>
+        <h2 className="auth-title">
           Create your account
         </h2>
-        <p className="mt-2 text-center text-sm text-slate-600">
+        <p className="auth-subtitle">
           Already have an account?{' '}
           <Link
             href="/login"
@@ -99,8 +91,7 @@ export default function SignUpPage() {
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
-        <div className="bg-white py-8 px-6 shadow-sm border border-slate-200 rounded-2xl sm:px-10">
+      <div className="auth-card-panel">
           {error && (
             <div className="mb-5 rounded-lg bg-red-50 border border-red-200 p-3 text-xs text-red-700 flex items-start gap-2">
               <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-500 mt-0.5" />
@@ -226,9 +217,8 @@ export default function SignUpPage() {
           <div className="mt-6 pt-6 border-t border-slate-100 text-center text-xs text-slate-500">
             By signing up, you agree to TaskNest&apos;s Terms of Service and Privacy Policy.
           </div>
-        </div>
       </div>
-    </div>
+    </AuthPageShell>
   )
 }
 

@@ -26,8 +26,8 @@ export function Header({
   const displayName = username.charAt(0).toUpperCase() + username.slice(1)
 
   return (
-    <header className="bg-white border-b border-slate-200 py-6 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <header className="dashboard-topbar bg-white border-b border-slate-200 py-6 px-4 sm:px-8">
+      <div className="max-w-7xl mx-auto pr-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-center gap-3">
           <button
             onClick={onToggleMobileMenu}

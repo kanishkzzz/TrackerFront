@@ -241,7 +241,7 @@ export default function DashboardPage() {
   }, [tasks, activeFilter, searchQuery])
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="dashboard-page min-h-screen bg-slate-50 flex">
       {/* Sidebar Component */}
       <Sidebar
         activeFilter={activeFilter}
@@ -265,7 +265,7 @@ export default function DashboardPage() {
           onToggleMobileMenu={() => setMobileMenuOpen(true)}
         />
 
-        <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
+        <main className="dashboard-content flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
           {/* Notification Toast */}
           {notification && (
             <div
@@ -284,11 +284,16 @@ export default function DashboardPage() {
             </div>
           )}
 
+          <div className="dashboard-section-intro">
+            <span>WORKSPACE OVERVIEW</span>
+            <p>Your next small step starts here.</p>
+          </div>
+
           {/* Statistics Cards */}
           <StatsCards stats={stats} />
 
           {/* Search & Filters Bar */}
-          <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div className="dashboard-toolbar bg-white p-4 rounded-2xl border border-slate-200 shadow-xs mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             {/* Search Input */}
             <div className="relative flex-1">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
